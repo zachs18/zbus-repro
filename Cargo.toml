@@ -6,13 +6,17 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 # disable incremental complilation for more reproducible compile times
+# The issue is still reproducible with incremental = true, but you have to actually change `lib.rs`
+# not just `touch src/lib.rs`.
 [profile.dev]
 incremental = false
 
 [dependencies]
-tokio = { version = "1.28.2", features = ["full"] }
-anyhow = "1.0.71"
-tracing = "0.1.37"
-tokio-util = "0.7.8"
 zbus = { version = "3.14.1", default-features = false, features = ["tokio"] }
-futures = "0.3.28"
+
+[features]
+16 = ["12"]
+12 = ["8"]
+8 = ["4"]
+4 = ["1"]
+1 = []
